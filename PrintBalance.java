@@ -41,7 +41,7 @@ public class PrintBalance {
 		Locale deLocale = new Locale("de", "DE");
 		
 		// Set Locale
-		String language = languageList.get(0);
+		String language = languageList.get(0); // Please feel free to modify in comparison to the Locale ArrayLists
 		String country = regionList.get(0);
 		Locale currentLocale = new Locale(language, country);
 
