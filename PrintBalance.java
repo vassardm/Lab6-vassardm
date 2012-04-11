@@ -1,6 +1,7 @@
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -23,19 +24,30 @@ public class PrintBalance {
 	public static void main(String args[]) throws ParseException {
 
 		// Add in Localization
-		String language;
-		String country;
+		ArrayList<String> languageList = new ArrayList<String>();
+		ArrayList<String> regionList = new ArrayList<String>();
+		languageList.add("en");
+		languageList.add("fr");
+		languageList.add("de");
+		regionList.add("US");
+		regionList.add("CA");
+		regionList.add("FR");
+		regionList.add("DE");
 
 		// Add in Locales
 		Locale aLocale = new Locale("en", "US");
 		Locale caLocale = new Locale("fr", "CA");
 		Locale frLocale = new Locale("fr", "FR");
 		Locale deLocale = new Locale("de", "DE");
-		Locale currentLocale = new Locale("en", "US");
+		
+		// Set Locale
+		String language = languageList.get(0);
+		String country = regionList.get(0);
+		Locale currentLocale = new Locale(language, country);
 
 		// Initialize the Resource Bundle
 		ResourceBundle messages;
-		messages = ResourceBundle.getBundle("MessagesBundle", aLocale);
+		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
 
 		// Initialize the Scanner
 		Scanner scanInput = new Scanner(System.in);
