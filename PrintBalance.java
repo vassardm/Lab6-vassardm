@@ -1,5 +1,6 @@
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -16,9 +17,10 @@ public class PrintBalance {
 	 * Simple Java Method that is crying out to be localized.
 	 * 
 	 * @param args
+	 * @throws ParseException 
 	 */
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws ParseException {
 
 		// Add in Localization
 		String language;
@@ -38,6 +40,7 @@ public class PrintBalance {
 		// Initialize the Scanner
 		Scanner scanInput = new Scanner(System.in);
 		Date today = new Date();
+		Number currency = NumberFormat.getInstance().parse((messages.getString("specificAmount")));
 
 		// Greeting
 		String hello = messages.getString("hello");
@@ -53,8 +56,7 @@ public class PrintBalance {
 				+ DateFormat.getDateTimeInstance(DateFormat.FULL,
 						DateFormat.FULL, currentLocale).format(today));
 		System.out.println(messages.getString("debt")
-				+ NumberFormat.getCurrencyInstance(currentLocale).format(
-						messages.getString("specficAmount")));
+				+ NumberFormat.getCurrencyInstance(currentLocale).format(currency));
 		System.out.println(messages.getString("farewell"));
 
 	}
